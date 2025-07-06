@@ -1,0 +1,7 @@
+Flask
+fpdf
+pdfplumber
+python-docx
+euriai
+werkzeug
+python-dotenv

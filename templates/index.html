@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MCQ Generator</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a2d9d5a32d.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .loader-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+
+    .loader {
+      border: 8px solid transparent;
+      border-top: 8px solid #ff3cac;
+      border-right: 8px solid #784ba0;
+      border-bottom: 8px solid #2b86c5;
+      border-left: 8px solid #43e97b;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .card-header h1 {
+      font-size: 26px;
+      margin: 0;
+      color: #fff;
+    }
+
+    form label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .custom-file-upload {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1c2b3a;
+      border: 2px dashed #4b688b;
+      border-radius: 10px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-file-upload:hover {
+      background-color: #2b3f54;
+    }
+
+    .custom-file-upload span {
+      color: #aaa;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 5px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      color: #fff;
+      background: #28a745;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid #444;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 22px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader-overlay" id="loader">
+    <div class="loader"></div>
+  </div>
+
+  <div class="container">
+    <div class="card-header">
+      <h1>🧠 Gemini MCQ Generator Using EURI</br></h1>
+    </div>
+
+    <form action="/generate" method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+      <label for="file">📄 Upload Your Document</label>
+      <label for="file" class="custom-file-upload">
+        <span><i class="fas fa-upload"></i> Choose File (PDF, DOCX, TXT)</span>
+        <input type="file" name="file" id="file" required>
+      </label>
+
+      <label for="num_questions">❓ How many MCQs do you want?</label>
+      <input type="number" name="num_questions" min="1" required>
+
+      <button type="submit">🚀 Generate MCQs</button>
+    </form>
+  </div>
+
+  <footer>
+    <div>Made with ❤️ by <strong>Mohammad Wasiq</strong></div>
+    <div class="social-icons">
+      <a href="mailto:your.email@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/yourhandle" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
+  <!-- JavaScript to show loader -->
+  <script>
+    function showLoader() {
+      document.getElementById("loader").style.display = "flex";
+    }
+  </script>
+
+</body>
+</html>
